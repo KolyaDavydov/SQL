@@ -1,30 +1,26 @@
-select
-	ORDER_DATE as ACTION_DATE,
+SELECT
+	order_date AS action_date,
 	(
-	select
-		NAME
-	from
-		PERSON
-	where
-		ID = PERSON_ORDER.PERSON_ID) as PERSON_NAME
-from
-	PERSON_ORDER
-intersect
-/*--INTERSECT (ПЕРЕСЕЧЕНИЕ) – ЭТО ОПЕРАТОР TRANSACT-SQL,
- * КОТОРЫЙ ВЫВОДИТ ОДИНАКОВЫЕ СТРОКИ ИЗ ПЕРВОГО, ВТОРОГО
- * И ПОСЛЕДУЮЩИХ НАБОРОВ ДАННЫХ. ДРУГИМИ СЛОВАМИ, ОН ВЫВЕДЕТ
- * ТОЛЬКО ТЕ СТРОКИ, КОТОРЫЕ ЕСТЬ КАК В ПЕРВОМ РЕЗУЛЬТИРУЮЩЕМ НАБОРЕ, ТАК И ВО ВТОРОМ*/
-select
-	VISIT_DATE as ACTION_DATE,
+	SELECT
+		name
+	FROM
+		person
+	WHERE
+		id = person_order.person_id) AS person_name
+FROM
+	person_order
+INTERSECT 
+SELECT
+	visit_date AS action_date,
 	(
-	select
-		NAME as PERSON_NAME
-	from
-		PERSON
-	where
-		ID = PERSON_VISITS.PERSON_ID)
-from
-	PERSON_VISITS
-order by
-	ACTION_DATE,
-	PERSON_NAME desc
+	SELECT
+		name
+	FROM
+		person
+	WHERE
+		id = person_visits.person_id) AS person_name
+FROM
+	person_visits
+ORDER BY
+	action_date,
+	person_name DESC

@@ -1,11 +1,4 @@
-select
-	PIZZA_NAME as OBJECT_NAME
-from
-	MENU
-union all
-select
-	NAME as OBJECT_NAME
-from
-	PERSON
-order by
-	OBJECT_NAME
+SELECT pizza_name AS object_name FROM menu
+UNION ALL
+SELECT name AS object_name FROM person
+ORDER BY object_name

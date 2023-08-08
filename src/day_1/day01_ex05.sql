@@ -1,8 +1,9 @@
-select
-	*
-from
-	PERSON,
-	PIZZERIA
-order by
-	PERSON.ID,
-	PIZZERIA.ID;
+SELECT
+	person.*,
+	pizzeria.*
+FROM
+	person
+CROSS JOIN pizzeria
+ORDER BY
+	person.id,
+	pizzeria.id
