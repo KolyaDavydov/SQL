@@ -1,0 +1,14 @@
+select
+	ID as OBJECT_ID,
+	PIZZA_NAME as OBJECT_NAME
+from
+	MENU
+union
+select
+	ID as OBJECT_ID,
+	NAME as OBJECT_NAME
+from
+	PERSON
+order by
+	OBJECT_ID,
+	OBJECT_NAME
